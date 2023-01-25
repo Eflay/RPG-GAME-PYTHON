@@ -1,0 +1,62 @@
+@startuml Main
+mainframe Sequence of main application
+
+Actor Application
+Application -> DB:create database
+
+DB --> Application
+
+Application -> Character:generate random classes
+
+Character --> Application:return classes
+
+Application -> DB:insert character
+
+DB --> Application
+
+Application -> DB:select 20 character
+
+DB --> Application: return all selected characters
+
+Application -> Battle:start new battle
+activate Battle
+
+group Battle sequence
+
+Battle -> Team:team create
+activate Team
+
+Team -> Team:team_naming
+
+Team -> Team:team_compose
+
+Team -> Team:tactics
+
+Team --> Battle:return teams
+deactivate Team
+
+Battle -> Character:start life cycle of fight
+note left: Make a thread for all characters
+activate Character
+
+Character -> Character:split between tactics
+
+Character -> Character:fighting/healing system
+
+Character --> Battle:return teams win/defeat
+deactivate Character
+
+Battle -> Battle:end
+
+Battle --> DB:Update characters
+Battle --> DB:Update battle
+Battle --> DB:Update teams
+Battle --> DB:Update history
+
+Battle -> Battle:show results
+
+Battle --> Application
+deactivate Battle
+end
+
+@enduml

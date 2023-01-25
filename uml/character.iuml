@@ -1,0 +1,37 @@
+@startuml character
+start
+partition "**Life cycle of a character**" {
+repeat : Battle
+
+switch (Which tactics ?)
+case ( 1 )
+:Random ennemy to attack;
+case ( 2 ) 
+:Lowest health to attack;
+case ( 3 ) 
+:Priest in ennemies to attack;
+case ( 4 )
+:Lowest health in allies to heal;
+case ( 5 )
+:Highest attack in ennemies to attack;
+case ( 6 )
+:Multiple target Mage;
+endswitch
+
+if ( Priest ?) then (yes)
+    : Attack or heal;
+    if (tactic ?) then (1,2,3,5,6)
+        : 50% chance to attack or heal;
+    else (4)
+        : 100% to heal;
+    endif
+else (no)
+    : Attack;
+
+endif
+
+repeat while (ennemies still alive ?) is (yes) not (no)
+}
+
+stop
+@enduml

@@ -1,0 +1,25 @@
+@startuml DB
+
+history : PK history_id: INTEGER
+history : date: TEXT
+history : FK character_alive_id: INTEGER
+history : FK character_dead_id: INTEGER
+history : team: TEXT
+history : tactic: INTEGER
+history : win: TEXT
+
+character : PK character_id: INTEGER
+character : class: TEXT
+character : name: TEXT
+character : attack: INTEGER
+character : defense: INTEGER
+character : health: INTEGER
+character : crit: INTEGER
+character : initiative: INTEGER
+character : dodge: INTEGER
+character : recovery: INTEGER
+character : parry: INTEGER
+character : max_health: INTEGER
+
+
+@enduml

@@ -1,0 +1,36 @@
+@startuml fighting System
+partition "**One character Fighting system**"
+start
+
+
+if ( ennemy & ally is alive ) then (yes)
+    if ( ennemy defense is higher than ally attack ) then (yes)
+        if ( critical strike ?) then (yes)
+            : Full damage;
+        else (no)
+            : 0 damage;
+        endif
+    else (no)
+        if ( dodge or parry ? ) then (yes)
+            : 0 damage;
+        else (no)
+            if ( critical strike ?) then (yes)
+            : Full damage;
+            else (no)
+                : damage = damage - defense;
+            endif
+        endif
+    endif
+else (no)
+    stop
+
+endif
+
+if ( ennemy is dead ) then (yes)
+    : remove from ennemies team;
+else (no)
+    stop
+    
+endif
+stop
+@enduml

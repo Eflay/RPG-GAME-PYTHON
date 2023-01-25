@@ -1,0 +1,36 @@
+@startuml Battle
+mainframe Sequence of one battle
+
+Actor Battle
+Battle -> Team:team create
+activate Team
+
+Team -> Team:team_naming
+
+Team -> Team:team_compose
+
+Team -> Team:tactics
+
+Team --> Battle:return teams
+deactivate Team
+
+Battle -> Character:thread attack or heal
+activate Character
+
+Character -> Character:split between tactics
+
+Character -> Character:fighting/healing system
+
+Character --> Battle:return teams win/defeat
+deactivate Character
+
+Battle -> Battle:end
+
+Battle --> DB:Update characters
+Battle --> DB:Update battle
+Battle --> DB:Update teams
+Battle --> DB:Update history
+
+Battle -> Battle:show results
+
+@enduml
